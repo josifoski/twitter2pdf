@@ -26,6 +26,6 @@ if blist:
 filtering = True  
 numofpulledtweets = 200 #last tweets  # if date interval is wide then increase numofpulledtweets
 # maximum is afaik 2000-3000 tweets.
-#also be aware that pulling is for last tweets, so date intervals eventually should be close by today
-#depends on how many tweets are for user or list
+# also be aware that pulling is for last tweets, so date intervals eventually should be close by today
+# depends on how many tweets are for user or list
 ```
