@@ -1,7 +1,7 @@
 # twitter2pdf
 Python script to create pdf from twitter streams, user timelines or lists
   
-Getting tweets from lists or user timelines python script and creating pdf from them using optional filter
+Getting tweets from lists or user timelines python script and creating pdf from them using optional filter  
 programmer: Josifoski Aleksandar twitter.com/adam222up
 
 
