@@ -24,5 +24,8 @@ blist = True #for using lists, if false, then username tweets from timeline will
 if blist:  
     whichlist = 'news' #also change here specific list  
 filtering = True  
-numofpulledtweets = 200 #last tweets  # if date interval is wide then increase numofpulledtweets  
+numofpulledtweets = 200 #last tweets  # if date interval is wide then increase numofpulledtweets
+# maximum is afaik 2000-3000 tweets.
+#also be aware that pulling is for last tweets, so date intervals eventually should be close by today
+#depends on how many tweets are for user or list
 ```
