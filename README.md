@@ -21,6 +21,6 @@ printreff = True  #writing time, source, link
 username = 'adam222up' #change here username  
 blist = True #for using lists, if false, then username tweets from timeline will be pulled  
 if blist:  
-       whichlist = 'news' #also change here specific list  
+    whichlist = 'news' #also change here specific list  
 filtering = True  
 numofpulledtweets = 200 #last tweets  # if date interval is wide then increase numofpulledtweets  
