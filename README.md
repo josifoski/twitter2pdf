@@ -14,7 +14,8 @@ also program is dependant on installed libreoffice to generate pdf, keep eye how
   
 # Usage
 just before starting script change this details (in script):  
- 
+  
+```
 startdate = '2015-08-01'  
 enddate = '2015-08-24'  
 printreff = True  #writing time, source, link  
@@ -24,3 +25,4 @@ if blist:
     whichlist = 'news' #also change here specific list  
 filtering = True  
 numofpulledtweets = 200 #last tweets  # if date interval is wide then increase numofpulledtweets  
+```
