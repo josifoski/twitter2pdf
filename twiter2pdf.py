@@ -22,8 +22,8 @@ from pdfrw.buildxobj import pagexobj
 # also program is dependant on installed libreoffice to generate pdf, keep eye how is started via command line
 
 # INPUT INPUT INPUT INPUT INPUT INPUT INPUT 
-startdate = '2015-08-01' 
-enddate = '2015-08-24'
+startdate = '2015-08-25' 
+enddate = '2015-08-25'
 printreff = True  #writing time, source, link
 username = 'adam222up' #change here username
 blist = True #for using lists, if false, then username tweets from timeline will be pulled
@@ -34,10 +34,10 @@ numofpulledtweets = 200 #last tweets
 ##############################################
 
 if blist:
-    os.system("t list timeline -l -r -n %d %s/%s > temp.txt" % (numofpulledtweets, username, whichlist))
+    os.system("t list timeline -l -r -n %d %s/%s > tweets.txt" % (numofpulledtweets, username, whichlist))
     decision = whichlist
 else:
-    os.system("t timeline -l -r -n %d %s > temp.txt" % (numofpulledtweets, username))
+    os.system("t timeline -l -r -n %d %s > tweets.txt" % (numofpulledtweets, username))
     decision = username
 
 firstday = datetime.datetime.strptime(startdate, "%Y-%m-%d").timetuple().tm_yday
@@ -45,14 +45,13 @@ lastday = datetime.datetime.strptime(enddate, "%Y-%m-%d").timetuple().tm_yday
 year = enddate[:4]
 ddat1 = { 'Jan':'01', 'Feb':'02', 'Mar':'03', 'Apr':'04', 'May':'05', 'Jun':'06', 'Jul':'07', 'Aug':'08', 'Sep':'09', 'Oct':'10', 'Nov':'11', 'Dec':'12' }
 
-ftemp = codecs.open('temp.txt', 'r', 'utf-8')
+ftemp = codecs.open('tweets.txt', 'r', 'utf-8')
 
 lstemp = ftemp.readlines()
 for ind in range(len(lstemp)):
     lstemp[ind] = lstemp[ind].strip()
 
 ftemp.close()
-os.remove('temp.txt')
 
 if startdate == enddate:
     fname = decision + '_' + startdate + 'd'
@@ -70,12 +69,12 @@ for twit in lstemp:
     if concreteday >= firstday and concreteday <= lastday: 
         bejko.append(' '.join(twit.split()[1:]))
 
-# reject tweets where this words occures if filtering is True
+# reject tweets where this words occures if filtering is True, feel free to adjust filter
 lmyfilter = [ 'Ријана', 'Северина', 'Цеца', 'Роналдо', 'Кардашијан', 'Шаулиќ', 'Астон Вила',  'Спортклуб',  'НБА',
 'Хајди Клум', 'SportMedia', 'СуперСпорт', 'СЕХА', 'Барса', 'Реал Мадрид', 'Суарез', 'секс', 'облини', 'задник', 'задници', 'градник', 'пенис', 'Мадона', 'Лопез',
 'порно', 'Беквалац', 'Бундес', 'Примера', 'ВИДЕО 18+', 'ВИДЕО+18', '+18 ВИДЕО', 'манекенка', 'старлета', 'Мурињо', 'Лигата на шампиони',
 'оргаз',  'Јувентус', 'Фиорентина', 'Сампдорија', 'Лацио', 'топлес', 'проститу', 'ФИФА', 'гаќи', 'премиер лига',
-'деколте', 'зодијак', 'Automedia', 'Авто Магазин', 'Galaxy', 'Samsung']
+'деколте', 'зодијак', 'Automedia', 'Авто Магазин', 'Galaxy', 'Samsung', 'Џастин Бибер']
 
 for twit in bejko:
         if filtering:
@@ -95,6 +94,8 @@ for twit in bejko:
                         out.write('// ' + ' '.join(twit.split()[:4]) + '\n\n')
                 else:
                     out.write('\n')
+                                      
+
         else:
             if 'http:' in twit.split()[-1]:
                 out.write(' '.join(twit.split()[4:-1]) + '\n')
@@ -106,7 +107,8 @@ for twit in bejko:
                 else:
                     out.write('// ' + ' '.join(twit.split()[:4]) + '\n\n')
             else:
-                out.write('\n')
+                out.write('\n')   
+
 
 out.close()
 
