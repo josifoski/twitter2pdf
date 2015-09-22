@@ -22,8 +22,8 @@ from pdfrw.buildxobj import pagexobj
 # also program is dependant on installed libreoffice to generate pdf, keep eye how is started via command line
 
 # INPUT INPUT INPUT INPUT INPUT INPUT INPUT 
-startdate = '2015-09-15' 
-enddate = '2015-09-15'
+startdate = '2015-09-21' 
+enddate = '2015-09-21'
 printreff = True  #writing time, source, link
 username = 'adam222up' #change here username
 blist = True #for using lists, if false, then username tweets from timeline will be pulled
@@ -82,7 +82,7 @@ for twit in bejko:
         if filtering:
             letitpass = True
             for filteritem in lmyfilter:
-                if filteritem.lower() in twit.lower():
+                if filteritem.lower().strip('!"&\'()*,-./:;?<>[\]_{}«·»‑–—―‖‘’“”…′$#') in twit.lower():
                     letitpass = False
             if letitpass:
                 if 'http:' in twit.split()[-1]:
